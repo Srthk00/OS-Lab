@@ -3,7 +3,7 @@
 #include <stdlib.h>
 int main(){
     int x=fork();
-    printf("%d\n",getpid());
     printf("%d\n",getppid());
+    printf("%d\n",getpid());
     return 0;
 }

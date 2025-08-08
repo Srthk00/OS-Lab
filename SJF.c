@@ -18,14 +18,14 @@ typedef struct process{
 int cmp(const void* a, const void* b){
     process* p1=(process*)a;
     process* p2=(process*)b;
-    return p1->burst-p2->burst;
+    return p1->arrival_time-p2->arrival_time;
 }
 
 int main(){
     int n;
     printf("Enter number of Processes: ");
     scanf("%d",&n);
-    bool *iscompleted=(bool)malloc(n*sizeof(bool));
+    bool *iscompleted=(bool*)malloc(n*sizeof(bool));
     for(int i=0;i<n;i++)iscompleted[i]=false;
     bool is_first_process=true;
     process P[n];
@@ -62,12 +62,18 @@ int main(){
             time++;
         }
         else{
+            completed++;
             P[min_index].starting_time=time;
             P[min_index].completion_time=P[min_index].starting_time+P[min_index].burst;
             P[min_index].turn_around=P[min_index].completion_time-P[min_index].arrival_time;
             P[min_index].waiting_time=P[min_index].turn_around-P[min_index].burst;
             P[min_index].response_time=P[min_index].waiting_time;
         }
+    }
+    printf("Gantt Chart...\n");
+    printf("Process ID\tArrival\tBurst\tStart\tCompletion\tTAT\tUtility\n");
+    for(int i=0;i<n;i++){
+        printf("%d\t\t%d\t%d\t%d\t%d\t\t%d\t%d\n",P[i].id,P[i].arrival_time,P[i].burst,P[i].starting_time,P[i].completion_time,P[i].turn_around,P[i].waiting_time);
     }
     return 0;
 }

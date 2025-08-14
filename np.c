@@ -4,7 +4,7 @@
 #include <stdbool.h>
 #include <limits.h>
 
-typedef struct process{
+struct process{
     int id;
     int arrival_time;
     int burst;
@@ -13,13 +13,10 @@ typedef struct process{
     int turn_around;
     int waiting_time;
     int response_time;
-}process;
+    int priority;
+};
 
-int cmp(const void* a, const void* b){
-    process* p1=(process*)a;
-    process* p2=(process*)b;
-    return p1->arrival_time-p2->arrival_time;
-}
+typedef struct process process;
 
 int main(){
     int n;
@@ -38,38 +35,35 @@ int main(){
     for(int i=0;i<n;i++){
         scanf("%d",&P[i].burst);
     }
-    qsort(P,n,sizeof(process),cmp);
+    printf("Enter Priority of Processes: ");
+    for(int i=0;i<n;i++){
+        scanf("%d",&P[i].priority);
+    }
     int time=0;
     int completed=0;
     while(completed!=n){
-        int min_index=-1;
-        int minimum=INT_MAX;
+        int min=-1;
+        int maxpriority=INT_MIN;
         for(int i=0;i<n;i++){
             if(P[i].arrival_time<=time && !iscompleted[i]){
-                if(P[i].burst<minimum){
-                    minimum=P[i].burst;
-                    min_index=i;
-                }
-                if(P[i].burst==minimum){
-                    if(P[i].arrival_time<P[min_index].arrival_time){
-                        minimum=P[i].burst;
-                        min_index=i;
-                    }
+                if(P[i].priority>maxpriority){
+                    maxpriority=P[i].priority;
+                    min=i;
                 }
             }
         }
-        if(min_index==-1){
+        if(min==-1){
             time++;
         }
         else{
             completed++;
-            iscompleted[min_index]=true;
-            P[min_index].starting_time=time;
-            P[min_index].completion_time=P[min_index].starting_time+P[min_index].burst;
-            P[min_index].turn_around=P[min_index].completion_time-P[min_index].arrival_time;
-            P[min_index].waiting_time=P[min_index].turn_around-P[min_index].burst;
-            P[min_index].response_time=P[min_index].starting_time-P[min_index].arrival_time;
-            time+=P[min_index].burst;
+            iscompleted[min]=true;
+            P[min].starting_time=time;
+            P[min].completion_time=P[min].starting_time+P[min].burst;
+            P[min].turn_around=P[min].completion_time-P[min].arrival_time;
+            P[min].waiting_time=P[min].turn_around-P[min].burst;
+            P[min].response_time=P[min].starting_time-P[min].arrival_time;
+            time+=P[min].burst;
         }
     }
     printf("Gantt Chart...\n");

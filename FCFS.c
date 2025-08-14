@@ -10,6 +10,8 @@ typedef struct process{
     int completion_time;
     int turn_around;
     int util_time;
+    int response_time;
+    int waiting_time;
 }process;
 
 int cmp(const void* a, const void* b){
@@ -43,11 +45,13 @@ int main(){
         P[i].turn_around=P[i].completion_time-P[i].arrival_time;
         P[i].util_time=P[i].turn_around-P[i].burst;
         time=P[i].completion_time;
+        P[i].response_time=P[i].starting_time-P[i].arrival_time;
+        P[i].waiting_time=P[i].turn_around-P[i].burst;
     }
     printf("Gantt Chart...\n");
-    printf("Process ID\tArrival\tBurst\tStart\tCompletion\tTAT\tUtility\n");
+    printf("Process ID\tArrival\tBurst\tStart\tCompletion\tResponse\tTAT\tWaiting\n");
     for(int i=0;i<n;i++){
-        printf("%d\t\t%d\t%d\t%d\t%d\t\t%d\t%d\n",P[i].id,P[i].arrival_time,P[i].burst,P[i].starting_time,P[i].completion_time,P[i].turn_around,P[i].util_time);
+        printf("%d\t\t%d\t%d\t%d\t%d\t\t%d\t\t%d\t%d\n",P[i].id,P[i].arrival_time,P[i].burst,P[i].starting_time,P[i].completion_time,P[i].response_time,P[i].turn_around,P[i].waiting_time);
     }
     return 0;
 }

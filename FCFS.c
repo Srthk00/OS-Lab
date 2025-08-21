@@ -49,6 +49,10 @@ int main(){
         P[i].waiting_time=P[i].turn_around-P[i].burst;
     }
     printf("Gantt Chart...\n");
+    for(int i=0;i<n;i++){
+        printf("P%d ", P[i].id);
+    }
+    printf("\n");
     printf("Process ID\tArrival\tBurst\tStart\tCompletion\tResponse\tTAT\tWaiting\n");
     for(int i=0;i<n;i++){
         printf("%d\t\t%d\t%d\t%d\t%d\t\t%d\t\t%d\t%d\n",P[i].id,P[i].arrival_time,P[i].burst,P[i].starting_time,P[i].completion_time,P[i].response_time,P[i].turn_around,P[i].waiting_time);

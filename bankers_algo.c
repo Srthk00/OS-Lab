@@ -60,7 +60,7 @@ int main(){
     }
     printf("\n\nProcess\tAllocated\tMax\t\tNeed\tAvailable After\n");
     for(int i=0;i<n;i++){
-        printf("P%d\t%d %d %d\t%d %d %d\t\t%d %d %d\t%d %d %d\n",i,allocated[i].A,allocated[i].B,allocated[i].C,max_need[i].A,max_need[i].B,max_need[i].C,remaining[i].A,remaining[i].B,remaining[i].C,available[i].A,available[i].B,available[i].C);
+        printf("P%d\t%d %d %d\t\t%d %d %d\t\t%d %d %d\t%d %d %d\n",i,allocated[i].A,allocated[i].B,allocated[i].C,max_need[i].A,max_need[i].B,max_need[i].C,remaining[i].A,remaining[i].B,remaining[i].C,available[i].A,available[i].B,available[i].C);
     }
     return 0;
 }

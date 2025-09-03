@@ -24,7 +24,7 @@ int main(){
         int a_,b_,c_;
         scanf("%d %d %d",&a_,&b_,&c_);
         allocated[i].A=a_,allocated[i].B=b_,allocated[i].C=c_;
-        avA+=a_,avB+=b_,avC+=c_;;
+        avA+=a_,avB+=b_,avC+=c_;
     }
     printf("Enter Max Needed Resources\n");
     for(int i=0;i<n;i++){
@@ -47,9 +47,9 @@ int main(){
                 gantt[idx++]=i;
                 iscompleted[i]=true;
                 completed++;
-                available[i].A=avA+allocated[i].A;
-                available[i].B=avB+allocated[i].B;
-                available[i].C=avC+allocated[i].C;
+                available[i].A=avA;
+                available[i].B=avB;
+                available[i].C=avC;
                 break;
             }
         }
@@ -57,6 +57,10 @@ int main(){
     printf("\nGantt Chart...\n");
     for(int i=0;i<idx;i++){
         printf("P%d ",gantt[i]);
+    }
+    printf("\n\nProcess\tAllocated\tMax\t\tNeed\tAvailable After\n");
+    for(int i=0;i<n;i++){
+        printf("P%d\t%d %d %d\t%d %d %d\t\t%d %d %d\t%d %d %d\n",i,allocated[i].A,allocated[i].B,allocated[i].C,max_need[i].A,max_need[i].B,max_need[i].C,remaining[i].A,remaining[i].B,remaining[i].C,available[i].A,available[i].B,available[i].C);
     }
     return 0;
 }

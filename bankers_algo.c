@@ -39,8 +39,10 @@ int main(){
     int gantt[n],idx=0;
     int completed=0;
     for(int j=0;j<n;j++){
+        bool isdeadlock=true;
         for(int i=0;i<n;i++){
             if(remaining[i].A<=avA && remaining[i].B<=avB && remaining[i].C<=avC && iscompleted[i]==false){
+                isdeadlock=false;
                 avA+=allocated[i].A;
                 avB+=allocated[i].B;
                 avC+=allocated[i].C;
@@ -52,6 +54,10 @@ int main(){
                 available[i].C=avC;
                 break;
             }
+        }
+        if(isdeadlock){
+            printf("There is deadlock");
+            return 1;
         }
     }
     printf("\nGantt Chart...\n");

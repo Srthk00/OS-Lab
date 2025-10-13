@@ -45,7 +45,9 @@ int main(){
     double hit_ratio=hit/attempts;
     double miss_ratio=miss/attempts;
     printf("Total Attempts: %.0f\n",attempts);
-    printf("Hit Ratio: %.2f, (Total Hits: %.0f)",hit_ratio,hit);
-    printf("Miss Ratio: %.2f, (Total Misses: %.0f)\n",miss_ratio,miss);
+    printf("Hit Ratio: %.2f, (Total Hits: %.0f)\n",hit_ratio,hit);
+    printf("Miss Ratio: %.2f, (Total Misses: %.0f)",miss_ratio,miss);
     return 0;
 }
+// Input
+// 12 2 3 2 1 5 2 4 5 3 2 5 2 3

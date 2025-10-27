@@ -18,7 +18,7 @@ int main(){
     message.msg_type=1;
     if(fork()==0){
         strcpy(message.msg_text,"Message from Child");
-        msgsnd(msgid,&message,sizeof(message),0);
+        msgsnd(msgid,&message,sizeof(message.msg_text),0);
     }
     else{
         msgrcv(msgid,&message,sizeof(message.msg_text),1,0);

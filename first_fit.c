@@ -32,7 +32,7 @@ int main(){
     }
     for(int i=0;i<n;i++){
         if(result[i]==-1){
-            printf("Process %d cannot be allocated...\n",i);
+            printf("RAM block %d is free...\n",i);
         }
         else{
             printf("Process: %d allocated to RAM block(size: %d): %d\n",result[i],ram[i],i);

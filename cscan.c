@@ -10,7 +10,9 @@ int main(){
     printf("Enter number of inputs: ");
     scanf("%d",&n);
     int *nums=(int*)malloc((n+2)*sizeof(int));
-    for(int i=0;i<n;i++) scanf("%d",&nums[i]);
+    for(int i=0;i<n;i++){
+        scanf("%d",&nums[i]);
+    }
     int disk,head;
     printf("Enter size of Disk: ");
     scanf("%d",&disk);
@@ -31,7 +33,7 @@ int main(){
             result+=abs(cur-nums[i]);
             cur=nums[i];
         }
-        result+=abs(disk-1-0); // point1
+        result+=abs(disk-1-0);
         cur=0;
         for(int i=0;i<pos;i++){
             printf("%d-> ",nums[i]);
@@ -44,7 +46,7 @@ int main(){
             result+=abs(cur-nums[i]);
             cur=nums[i];
         }
-        result+=abs(cur-0)+abs(disk-1-0); // point2
+        result+=abs(cur-0)+abs(disk-1-0);
         cur=disk-1;
         for(int i=n-2;i>=pos;i--){
             printf("%d-> ",nums[i]);

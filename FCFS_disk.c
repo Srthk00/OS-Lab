@@ -9,12 +9,17 @@ int main(){
     for(int i=0;i<n;i++){
         scanf("%d",&nums[i]);
     }
-    int disk;
+    int disk,head;
+    printf("Enter Head position: ");
+    scanf("%d",&head);
     printf("Enter size of Disk: ");
     scanf("%d",&disk);
     int result=0;
-    for(int i=0;i<n-1;i++){
-        result+=abs(nums[i]-nums[i+1]);
+    printf("\nSeek Sequence:\n");
+    for(int i=0;i<n;i++){
+        printf("%d-> ",nums[i]);
+        result+=abs(head-nums[i]);
+        head=nums[i];
     }
     printf("Seek Count=%d\n",result);
     return 0;

@@ -44,7 +44,7 @@ int main(){
             head=nums[i];
             printf("%d-> ",head);
         }
-        for(int i=idx-1;i>=o;i--){
+        for(int i=idx-1;i>=0;i--){
             result+=abs(head-nums[i]);
             head=nums[i];
             printf("%d-> ",head);
